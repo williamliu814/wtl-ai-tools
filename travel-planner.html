@@ -336,6 +336,110 @@
     .loc-map-link:hover { text-decoration: underline; }
     .loc-map-link .fa-arrow-up-right-from-square { font-size: 9px; opacity: .7; }
 
+    /* ── WISHLIST SIDEBAR ENTRY ── */
+    .sidebar-wishlist {
+      margin: 8px 8px 0;
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 10px;
+      border: 1px dashed var(--border);
+      transition: background .12s, border-color .12s;
+    }
+    .sidebar-wishlist:hover { background: #fffbeb; border-color: #f6ad55; }
+    .sidebar-wishlist.active { background: #fffbeb; border-color: #f6ad55; }
+    .sidebar-wishlist.active .wish-sidebar-num { background: #ed8936; color: #fff; }
+    .wish-sidebar-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #feebc8; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0; color: #c05621;
+    }
+    .wish-sidebar-info { flex: 1; min-width: 0; }
+    .wish-sidebar-label { font-size: 13px; font-weight: 600; color: #c05621; }
+    .wish-sidebar-sub { font-size: 11px; color: var(--text-muted); }
+    .wish-count { font-size: 11px; color: #c05621; background: #feebc8; border-radius: 10px; padding: 1px 6px; }
+
+    /* ── WISHLIST VIEW ── */
+    .wishlist-header {
+      padding: 24px 28px 0;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .wishlist-header-info { flex: 1; }
+    .wishlist-title { font-size: 22px; font-weight: 700; }
+    .wishlist-subtitle { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
+    .wishlist-body { padding: 20px 28px 40px; display: flex; flex-direction: column; gap: 0; }
+    .wishlist-empty {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 12px; padding: 48px 0; color: var(--text-muted);
+    }
+    .wishlist-empty i { font-size: 36px; opacity: .3; }
+    .wish-section-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+      color: var(--text-muted); padding: 12px 0 6px;
+    }
+    .wish-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 13px 16px;
+      margin-bottom: 8px; box-shadow: var(--shadow);
+      transition: box-shadow .15s, border-color .15s, opacity .15s;
+    }
+    .wish-item:hover { box-shadow: var(--shadow-lg); border-color: #cbd5e0; }
+    .wish-item.done { opacity: .55; }
+    .wish-item.done .wish-name { text-decoration: line-through; color: var(--text-muted); }
+    .wish-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid var(--border); flex-shrink: 0; margin-top: 2px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .15s, border-color .15s; background: var(--surface);
+    }
+    .wish-check:hover { border-color: var(--success); }
+    .wish-item.done .wish-check { background: var(--success); border-color: var(--success); color: #fff; }
+    .wish-body { flex: 1; min-width: 0; }
+    .wish-top { display: flex; align-items: flex-start; gap: 8px; }
+    .wish-name { font-size: 14px; font-weight: 600; flex: 1; }
+    .wish-actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+    .wish-item:hover .wish-actions { opacity: 1; }
+    .wish-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
+    .wish-meta-item { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted); }
+    .wish-notes { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-style: italic; }
+    .plan-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; color: var(--primary);
+      background: var(--primary-light); border: 1px solid #c3cffe;
+      border-radius: 20px; padding: 3px 9px; cursor: pointer;
+      transition: background .12s, color .12s; flex-shrink: 0;
+      text-decoration: none;
+    }
+    .plan-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .wish-item.done .plan-btn { display: none; }
+
+    /* ── FROM-WISHLIST PICKER in event modal ── */
+    .from-wish-bar {
+      display: flex; align-items: center; gap: 8px;
+      background: #fffbeb; border: 1px dashed #f6ad55;
+      border-radius: var(--radius-sm); padding: 8px 12px;
+    }
+    .from-wish-bar i { color: #ed8936; flex-shrink: 0; }
+    .from-wish-bar select {
+      flex: 1; border: none; background: transparent;
+      font-family: inherit; font-size: 13px; color: var(--text);
+      cursor: pointer;
+    }
+    .from-wish-bar select:focus { outline: none; }
+    .wish-planned-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: #f0fff4; border: 1px solid #9ae6b4;
+      border-radius: var(--radius-sm); padding: 7px 10px; font-size: 13px;
+    }
+    .wish-planned-chip i { color: var(--success); }
+    .wish-planned-chip span { flex: 1; font-weight: 500; }
+    .wish-planned-chip button {
+      background: none; border: none; cursor: pointer; color: var(--text-muted);
+      width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    }
+    .wish-planned-chip button:hover { background: #fed7d7; color: var(--danger); }
+
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -376,6 +480,14 @@
       <h2><i class="fa-regular fa-calendar"></i>&nbsp; Itinerary</h2>
       <button class="btn btn-ghost btn-sm" style="width:100%" onclick="openAddDayModal()"><i class="fa-solid fa-plus"></i> Add Day</button>
     </div>
+    <div id="sidebarWishlist" class="sidebar-wishlist" onclick="selectWishlist()">
+      <div class="wish-sidebar-num"><i class="fa-solid fa-star"></i></div>
+      <div class="wish-sidebar-info">
+        <div class="wish-sidebar-label">Wishlist</div>
+        <div class="wish-sidebar-sub">Places to visit</div>
+      </div>
+      <span class="wish-count" id="wishCount" style="display:none"></span>
+    </div>
     <div class="days-list" id="daysList"></div>
     <div class="sidebar-footer">
       <button class="btn btn-danger btn-sm" style="width:100%" onclick="confirmDeleteTrip()"><i class="fa-solid fa-trash"></i> Delete Trip</button>
@@ -392,6 +504,10 @@
     </div>
 
     <div id="dayView" style="display:none">
+      <!-- injected dynamically -->
+    </div>
+
+    <div id="wishlistView" style="display:none">
       <!-- injected dynamically -->
     </div>
   </main>
@@ -463,6 +579,59 @@
   </div>
 </div>
 
+<!-- ADD / EDIT WISHLIST ITEM MODAL -->
+<div id="wishModal" class="modal-backdrop" style="display:none">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="wishModalTitle">Add to Wishlist</h2>
+      <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('wishModal')"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <label>Place / Activity Name</label>
+        <input id="wf_name" type="text" placeholder="e.g. Fushimi Inari Shrine" />
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="wf_category">
+          <option value="activity">Activity / Sightseeing</option>
+          <option value="food">Food &amp; Dining</option>
+          <option value="hotel">Hotel / Accommodation</option>
+          <option value="transport">Transport</option>
+          <option value="shopping">Shopping</option>
+          <option value="flight">Flight</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <div class="loc-search-wrap">
+          <div class="loc-search-row">
+            <input id="wf_location" type="text" placeholder="Search for a place or type manually…"
+              oninput="onWishLocationInput(this.value)" autocomplete="off" />
+            <button class="btn btn-ghost btn-sm" type="button" id="wishLocSearchBtn"
+              onclick="triggerWishLocationSearch()" title="Search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+          <div id="wishLocResults" class="loc-results" style="display:none"></div>
+          <div id="wishLocChip" class="loc-chip" style="display:none"></div>
+        </div>
+        <input type="hidden" id="wf_loc_lat" />
+        <input type="hidden" id="wf_loc_lng" />
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <textarea id="wf_notes" placeholder="Why you want to go, tips, links…" style="min-height:60px"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('wishModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveWishItem()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+    </div>
+  </div>
+</div>
+
 <!-- ADD / EDIT EVENT MODAL -->
 <div id="eventModal" class="modal-backdrop" style="display:none">
   <div class="modal">
@@ -471,6 +640,13 @@
       <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('eventModal')"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="modal-body">
+      <div id="fromWishRow" class="from-wish-bar" style="display:none">
+        <i class="fa-solid fa-star"></i>
+        <select id="wishPicker" onchange="applyWishlistPick(this.value)">
+          <option value="">— pick from wishlist —</option>
+        </select>
+      </div>
+      <div id="wishPlannedChip" class="wish-planned-chip" style="display:none"></div>
       <div class="field">
         <label>Title</label>
         <input id="ef_title" type="text" placeholder="e.g. Visit Senso-ji Temple" />
@@ -558,9 +734,14 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 let db = loadDB();
 let activeTripId = db.activeTripId || null;
 let activeDayId = null;
+let wishlistActive = false;         // sidebar showing wishlist view
 let editingEventId = null;
-let selectedLocationData = null; // { shortName, displayName, lat, lng }
+let editingWishId = null;
+let pendingWishItemId = null;       // wishlist item being planned into an activity
+let selectedLocationData = null;    // for event modal location search
+let selectedWishLocationData = null;// for wish modal location search
 let locDebounceTimer = null;
+let wishLocDebounceTimer = null;
 
 /* ════════════════ INIT ════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
@@ -601,10 +782,14 @@ function loadTrip(id, silent) {
   if (!db.trips[id]) return;
   activeTripId = id;
   activeDayId = null;
+  wishlistActive = false;
   db.activeTripId = id; saveDB(db);
+  // ensure wishlist array exists (backwards compat)
+  if (!db.trips[id].wishlist) { db.trips[id].wishlist = []; saveDB(db); }
   document.getElementById('tripSelect').value = id;
   showSidebar();
   renderDaysList();
+  refreshWishCount();
   // auto-select first day
   const trip = db.trips[id];
   if (trip.days && trip.days.length > 0) {
@@ -647,9 +832,12 @@ function renderDaysList() {
 /* ════════════════ DAY VIEW ════════════════ */
 function selectDay(dayId) {
   activeDayId = dayId;
-  renderDaysList(); // update active highlight
+  wishlistActive = false;
+  document.getElementById('sidebarWishlist').classList.remove('active');
+  renderDaysList();
   renderDayView();
   document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('wishlistView').style.display = 'none';
   document.getElementById('dayView').style.display = 'block';
 }
 
@@ -662,6 +850,7 @@ function showNoDaySelected() {
     <button class="btn btn-primary" onclick="openAddDayModal()"><i class="fa-solid fa-plus"></i> Add Day</button>
   `;
   document.getElementById('dayView').style.display = 'none';
+  document.getElementById('wishlistView').style.display = 'none';
 }
 
 function showEmptyState() {
@@ -674,6 +863,7 @@ function showEmptyState() {
   `;
   es.style.display = 'flex';
   document.getElementById('dayView').style.display = 'none';
+  document.getElementById('wishlistView').style.display = 'none';
 }
 
 function renderDayView() {
@@ -863,16 +1053,34 @@ function saveDay() {
 }
 
 /* ════════════════ EVENT MODAL ════════════════ */
-function openAddEventModal() {
+function openAddEventModal(prefill) {
   editingEventId = null;
   document.getElementById('eventModalTitle').textContent = 'Add Activity';
-  document.getElementById('ef_title').value = '';
-  document.getElementById('ef_category').value = 'activity';
   document.getElementById('ef_time').value = '';
   document.getElementById('ef_duration').value = '';
   document.getElementById('ef_desc').value = '';
   clearLocationData(true);
   hideLocResults();
+  document.getElementById('wishPlannedChip').style.display = 'none';
+  refreshWishlistPicker();
+  if (prefill) {
+    // called from openAddEventFromWish
+    document.getElementById('ef_title').value = prefill.name || '';
+    document.getElementById('ef_category').value = prefill.category || 'activity';
+    document.getElementById('ef_location').value = prefill.location || '';
+    if (prefill.locationLat != null && prefill.locationLng != null) {
+      document.getElementById('ef_loc_lat').value = prefill.locationLat;
+      document.getElementById('ef_loc_lng').value = prefill.locationLng;
+      selectedLocationData = { shortName: prefill.location, displayName: prefill.location, lat: prefill.locationLat, lng: prefill.locationLng };
+      renderLocChip(selectedLocationData);
+    }
+    document.getElementById('wishPicker').value = pendingWishItemId || '';
+    showWishPlannedChip(prefill);
+  } else {
+    pendingWishItemId = null;
+    document.getElementById('ef_title').value = '';
+    document.getElementById('ef_category').value = 'activity';
+  }
   document.getElementById('eventModal').style.display = 'flex';
   setTimeout(() => document.getElementById('ef_title').focus(), 80);
 }
@@ -883,6 +1091,9 @@ function openEditEventModal(eventId) {
   const ev = (day?.events||[]).find(e => e.id === eventId);
   if (!ev) return;
   editingEventId = eventId;
+  pendingWishItemId = null;
+  document.getElementById('fromWishRow').style.display = 'none';
+  document.getElementById('wishPlannedChip').style.display = 'none';
   document.getElementById('eventModalTitle').textContent = 'Edit Activity';
   document.getElementById('ef_title').value = ev.title || '';
   document.getElementById('ef_category').value = ev.category || 'activity';
@@ -930,8 +1141,16 @@ function saveEvent() {
   } else {
     day.events = [...(day.events||[]), { id: uid(), ...data }];
   }
+  // If planned from wishlist, mark that item done
+  if (pendingWishItemId && !editingEventId) {
+    const wl = getWishlist();
+    const wi = wl.find(w => w.id === pendingWishItemId);
+    if (wi) wi.done = true;
+    pendingWishItemId = null;
+  }
   saveDB(db);
   closeModal('eventModal');
+  refreshWishCount();
   renderDaysList();
   renderDayView();
 }
@@ -979,6 +1198,262 @@ function saveDayNotes(val) {
   const trip = db.trips[activeTripId];
   const day = (trip?.days||[]).find(d => d.id === activeDayId);
   if (day) { day.notes = val; saveDB(db); }
+}
+
+/* ════════════════ WISHLIST ════════════════ */
+function getWishlist() {
+  const trip = db.trips[activeTripId];
+  if (!trip) return [];
+  if (!trip.wishlist) trip.wishlist = [];
+  return trip.wishlist;
+}
+
+function refreshWishCount() {
+  const wl = getWishlist();
+  const remaining = wl.filter(w => !w.done).length;
+  const el = document.getElementById('wishCount');
+  if (!el) return;
+  if (wl.length === 0) { el.style.display = 'none'; return; }
+  el.textContent = remaining + '/' + wl.length;
+  el.style.display = '';
+}
+
+function selectWishlist() {
+  wishlistActive = true;
+  activeDayId = null;
+  document.getElementById('sidebarWishlist').classList.add('active');
+  renderDaysList(); // clears active from day items
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('dayView').style.display = 'none';
+  document.getElementById('wishlistView').style.display = 'block';
+  renderWishlistView();
+}
+
+function renderWishlistView() {
+  const trip = db.trips[activeTripId];
+  if (!trip) return;
+  const wl = getWishlist();
+  const pending = wl.filter(w => !w.done);
+  const done = wl.filter(w => w.done);
+
+  document.getElementById('wishlistView').innerHTML = `
+    <div class="wishlist-header">
+      <div class="wishlist-header-info">
+        <div class="wishlist-title"><i class="fa-solid fa-star" style="color:#ed8936;font-size:18px"></i> Travel Wishlist</div>
+        <div class="wishlist-subtitle">${esc(trip.name)} &mdash; ${wl.length} place${wl.length !== 1 ? 's' : ''}, ${pending.length} remaining</div>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="openAddWishModal()">
+        <i class="fa-solid fa-plus"></i> Add to Wishlist
+      </button>
+    </div>
+    <div class="wishlist-body">
+      ${wl.length === 0 ? `
+        <div class="wishlist-empty">
+          <i class="fa-regular fa-star"></i>
+          <span>Your wishlist is empty &mdash; add places you want to visit!</span>
+        </div>
+      ` : `
+        ${pending.length > 0 ? `
+          <div class="wish-section-label"><i class="fa-solid fa-circle-dot fa-xs"></i> To Visit (${pending.length})</div>
+          ${pending.map(w => renderWishCard(w)).join('')}
+        ` : ''}
+        ${done.length > 0 ? `
+          <div class="wish-section-label"><i class="fa-solid fa-check fa-xs"></i> Visited / Planned (${done.length})</div>
+          ${done.map(w => renderWishCard(w)).join('')}
+        ` : ''}
+      `}
+    </div>
+  `;
+}
+
+function renderWishCard(w) {
+  const catIcon = { flight:'fa-plane', hotel:'fa-bed', food:'fa-utensils',
+    activity:'fa-binoculars', transport:'fa-train', shopping:'fa-bag-shopping', other:'fa-star' }[w.category] || 'fa-star';
+  const locLink = w.location
+    ? `<span class="wish-meta-item">
+        <a href="${buildMapsUrl(w.locationLat, w.locationLng, w.location)}" target="_blank" rel="noopener" class="loc-map-link">
+          <i class="fa-solid fa-location-dot"></i> ${esc(w.location)}
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+       </span>` : '';
+  return `
+    <div class="wish-item${w.done ? ' done' : ''}" id="wish-${w.id}">
+      <div class="wish-check" onclick="toggleWishDone('${w.id}')" title="${w.done ? 'Mark as not visited' : 'Mark as visited'}">
+        ${w.done ? '<i class="fa-solid fa-check fa-xs"></i>' : ''}
+      </div>
+      <div class="wish-body">
+        <div class="wish-top">
+          <span class="event-category-badge cat-${w.category||'other'}">
+            <i class="fa-solid ${catIcon}"></i> ${w.category||'other'}
+          </span>
+          <div class="wish-name">${esc(w.name)}</div>
+          <div class="wish-actions">
+            <button class="btn btn-ghost btn-icon btn-sm" title="Edit" onclick="openEditWishModal('${w.id}')">
+              <i class="fa-solid fa-pen fa-xs"></i>
+            </button>
+            <button class="btn btn-danger btn-icon btn-sm" title="Delete" onclick="deleteWishItem('${w.id}')">
+              <i class="fa-solid fa-trash fa-xs"></i>
+            </button>
+          </div>
+        </div>
+        ${w.notes ? `<div class="wish-notes">${esc(w.notes)}</div>` : ''}
+        <div class="wish-meta">
+          ${locLink}
+        </div>
+      </div>
+      ${!w.done ? `<button class="plan-btn" onclick="openAddEventFromWish('${w.id}')">
+        <i class="fa-regular fa-calendar-plus"></i> Plan this
+      </button>` : ''}
+    </div>
+  `;
+}
+
+function toggleWishDone(id) {
+  const wl = getWishlist();
+  const item = wl.find(w => w.id === id);
+  if (!item) return;
+  item.done = !item.done;
+  saveDB(db);
+  refreshWishCount();
+  renderWishlistView();
+}
+
+function deleteWishItem(id) {
+  if (!confirm('Remove this item from the wishlist?')) return;
+  const trip = db.trips[activeTripId];
+  trip.wishlist = trip.wishlist.filter(w => w.id !== id);
+  saveDB(db);
+  refreshWishCount();
+  renderWishlistView();
+}
+
+/* ── Wish modal open/save ── */
+function openAddWishModal() {
+  editingWishId = null;
+  document.getElementById('wishModalTitle').textContent = 'Add to Wishlist';
+  document.getElementById('wf_name').value = '';
+  document.getElementById('wf_category').value = 'activity';
+  document.getElementById('wf_notes').value = '';
+  clearWishLocationData(true);
+  hideWishLocResults();
+  document.getElementById('wishModal').style.display = 'flex';
+  setTimeout(() => document.getElementById('wf_name').focus(), 80);
+}
+
+function openEditWishModal(id) {
+  const item = getWishlist().find(w => w.id === id);
+  if (!item) return;
+  editingWishId = id;
+  document.getElementById('wishModalTitle').textContent = 'Edit Wishlist Item';
+  document.getElementById('wf_name').value = item.name || '';
+  document.getElementById('wf_category').value = item.category || 'activity';
+  document.getElementById('wf_notes').value = item.notes || '';
+  clearWishLocationData(true);
+  hideWishLocResults();
+  document.getElementById('wf_location').value = item.location || '';
+  if (item.locationLat != null && item.locationLng != null) {
+    document.getElementById('wf_loc_lat').value = item.locationLat;
+    document.getElementById('wf_loc_lng').value = item.locationLng;
+    selectedWishLocationData = { shortName: item.location, displayName: item.location, lat: item.locationLat, lng: item.locationLng };
+    renderWishLocChip(selectedWishLocationData);
+  }
+  document.getElementById('wishModal').style.display = 'flex';
+  setTimeout(() => document.getElementById('wf_name').focus(), 80);
+}
+
+function saveWishItem() {
+  const name = document.getElementById('wf_name').value.trim();
+  if (!name) { document.getElementById('wf_name').focus(); return; }
+  const trip = db.trips[activeTripId];
+  if (!trip) return;
+  if (!trip.wishlist) trip.wishlist = [];
+  const locLat = parseFloat(document.getElementById('wf_loc_lat').value);
+  const locLng = parseFloat(document.getElementById('wf_loc_lng').value);
+  const data = {
+    name,
+    category: document.getElementById('wf_category').value,
+    location: document.getElementById('wf_location').value.trim(),
+    locationLat: isNaN(locLat) ? null : locLat,
+    locationLng: isNaN(locLng) ? null : locLng,
+    notes: document.getElementById('wf_notes').value.trim(),
+  };
+  if (editingWishId) {
+    const idx = trip.wishlist.findIndex(w => w.id === editingWishId);
+    if (idx !== -1) trip.wishlist[idx] = { ...trip.wishlist[idx], ...data };
+  } else {
+    trip.wishlist.push({ id: uid(), done: false, ...data });
+  }
+  saveDB(db);
+  closeModal('wishModal');
+  refreshWishCount();
+  renderWishlistView();
+}
+
+/* ── Plan a wishlist item into an activity ── */
+function openAddEventFromWish(wishId) {
+  const item = getWishlist().find(w => w.id === wishId);
+  if (!item) return;
+  // pick a day to plan it into — if one is already active use it, else ask
+  if (!activeDayId) {
+    const trip = db.trips[activeTripId];
+    if (!trip || !trip.days || trip.days.length === 0) {
+      alert('Add a day to your itinerary first, then plan this item.');
+      return;
+    }
+    // switch to first day automatically
+    selectDay(trip.days[0].id);
+  }
+  pendingWishItemId = wishId;
+  openAddEventModal(item);
+}
+
+/* ── wishlist picker inside event modal ── */
+function refreshWishlistPicker() {
+  const sel = document.getElementById('wishPicker');
+  const row = document.getElementById('fromWishRow');
+  if (!sel || !activeTripId) return;
+  const wl = getWishlist().filter(w => !w.done);
+  sel.innerHTML = '<option value="">— pick from wishlist —</option>'
+    + wl.map(w => `<option value="${w.id}">${esc(w.name)}${w.location ? ' · ' + esc(w.location) : ''}</option>`).join('');
+  row.style.display = wl.length > 0 ? 'flex' : 'none';
+}
+
+function applyWishlistPick(wishId) {
+  if (!wishId) {
+    pendingWishItemId = null;
+    document.getElementById('wishPlannedChip').style.display = 'none';
+    document.getElementById('ef_title').value = '';
+    clearLocationData(true);
+    return;
+  }
+  const item = getWishlist().find(w => w.id === wishId);
+  if (!item) return;
+  pendingWishItemId = wishId;
+  document.getElementById('ef_title').value = item.name;
+  document.getElementById('ef_category').value = item.category || 'activity';
+  clearLocationData(true);
+  document.getElementById('ef_location').value = item.location || '';
+  if (item.locationLat != null && item.locationLng != null) {
+    document.getElementById('ef_loc_lat').value = item.locationLat;
+    document.getElementById('ef_loc_lng').value = item.locationLng;
+    selectedLocationData = { shortName: item.location, displayName: item.location, lat: item.locationLat, lng: item.locationLng };
+    renderLocChip(selectedLocationData);
+  }
+  showWishPlannedChip(item);
+}
+
+function showWishPlannedChip(item) {
+  const chip = document.getElementById('wishPlannedChip');
+  chip.innerHTML = `<i class="fa-solid fa-star"></i>
+    <span>From wishlist: <strong>${esc(item.name)}</strong> — will be crossed off when saved</span>
+    <button onclick="clearWishPick()" title="Unlink"><i class="fa-solid fa-xmark fa-xs"></i></button>`;
+  chip.style.display = 'flex';
+}
+
+function clearWishPick() {
+  pendingWishItemId = null;
+  document.getElementById('wishPicker').value = '';
+  document.getElementById('wishPlannedChip').style.display = 'none';
 }
 
 /* ════════════════ LOCATION SEARCH (Nominatim / OSM) ════════════════ */
@@ -1097,6 +1572,107 @@ function clearLocationData(clearInput) {
   if (clearInput) document.getElementById('ef_location').value = '';
 }
 
+/* ── Wish modal location search (mirrors event modal) ── */
+function onWishLocationInput(val) {
+  if (selectedWishLocationData && val.trim() !== selectedWishLocationData.shortName) {
+    selectedWishLocationData = null;
+    document.getElementById('wf_loc_lat').value = '';
+    document.getElementById('wf_loc_lng').value = '';
+    document.getElementById('wishLocChip').style.display = 'none';
+  }
+  clearTimeout(wishLocDebounceTimer);
+  if (val.trim().length < 2) { hideWishLocResults(); return; }
+  wishLocDebounceTimer = setTimeout(() => doWishLocationSearch(val.trim()), 500);
+}
+
+function triggerWishLocationSearch() {
+  const q = document.getElementById('wf_location').value.trim();
+  if (q.length < 2) return;
+  clearTimeout(wishLocDebounceTimer);
+  doWishLocationSearch(q);
+}
+
+async function doWishLocationSearch(query) {
+  const btn = document.getElementById('wishLocSearchBtn');
+  const resultsEl = document.getElementById('wishLocResults');
+  btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+  resultsEl.style.display = 'none';
+  try {
+    const url = 'https://nominatim.openstreetmap.org/search?q='
+      + encodeURIComponent(query) + '&format=json&limit=6&addressdetails=1';
+    const res = await fetch(url, { headers: { 'Accept-Language': 'en', 'User-Agent': 'TravelPlannerApp/1.0' } });
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    showWishLocResults(data);
+  } catch {
+    resultsEl.innerHTML = '<div class="loc-result-error"><i class="fa-solid fa-circle-exclamation"></i> Search failed.</div>';
+    resultsEl.style.display = 'block';
+  } finally {
+    btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+  }
+}
+
+function showWishLocResults(results) {
+  const el = document.getElementById('wishLocResults');
+  if (!results || results.length === 0) {
+    el.innerHTML = '<div class="loc-result-empty">No places found.</div>';
+    el.style.display = 'block'; return;
+  }
+  el._results = results;
+  el.innerHTML = results.map((r, i) => {
+    const name = r.name || r.display_name.split(',')[0].trim();
+    return `<div class="loc-result-item" onclick="pickWishLocation(${i})">
+      <i class="fa-solid fa-location-dot"></i>
+      <div class="loc-result-text">
+        <div class="loc-result-name">${esc(name)}</div>
+        <div class="loc-result-addr">${esc(r.display_name)}</div>
+      </div>
+    </div>`;
+  }).join('');
+  el.style.display = 'block';
+}
+
+function pickWishLocation(idx) {
+  const el = document.getElementById('wishLocResults');
+  const r = el._results && el._results[idx];
+  if (!r) return;
+  const shortName = r.name || r.display_name.split(',')[0].trim();
+  selectedWishLocationData = { shortName, displayName: r.display_name, lat: parseFloat(r.lat), lng: parseFloat(r.lon) };
+  document.getElementById('wf_location').value = shortName;
+  document.getElementById('wf_loc_lat').value = selectedWishLocationData.lat;
+  document.getElementById('wf_loc_lng').value = selectedWishLocationData.lng;
+  hideWishLocResults();
+  renderWishLocChip(selectedWishLocationData);
+}
+
+function renderWishLocChip(loc) {
+  const chip = document.getElementById('wishLocChip');
+  const mapsUrl = buildMapsUrl(loc.lat, loc.lng, loc.shortName);
+  chip.innerHTML = `
+    <i class="fa-solid fa-location-dot"></i>
+    <span class="loc-chip-name" title="${esc(loc.displayName||loc.shortName)}">${esc(loc.shortName)}</span>
+    <a href="${mapsUrl}" target="_blank" rel="noopener" class="loc-chip-maps"><i class="fa-solid fa-map"></i> Maps</a>
+    <button class="loc-chip-clear" onclick="clearWishLocationData(true)" title="Remove">
+      <i class="fa-solid fa-xmark fa-xs"></i>
+    </button>`;
+  chip.style.display = 'flex';
+}
+
+function hideWishLocResults() {
+  const el = document.getElementById('wishLocResults');
+  if (!el) return;
+  el.style.display = 'none'; el.innerHTML = ''; el._results = null;
+}
+
+function clearWishLocationData(clearInput) {
+  selectedWishLocationData = null;
+  document.getElementById('wf_loc_lat').value = '';
+  document.getElementById('wf_loc_lng').value = '';
+  document.getElementById('wishLocChip').style.display = 'none';
+  document.getElementById('wishLocChip').innerHTML = '';
+  if (clearInput) document.getElementById('wf_location').value = '';
+}
+
 function buildMapsUrl(lat, lng, name) {
   if (lat != null && lng != null) {
     return 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng;
@@ -1118,9 +1694,12 @@ function esc(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// Close location dropdown when clicking outside
+// Close location dropdowns when clicking outside
 document.addEventListener('click', e => {
-  if (!e.target.closest('.loc-search-wrap')) hideLocResults();
+  if (!e.target.closest('.loc-search-wrap')) {
+    hideLocResults();
+    hideWishLocResults();
+  }
 });
 
 // Keyboard shortcuts
