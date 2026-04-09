@@ -1139,14 +1139,14 @@ function saveEvent() {
     const idx = day.events.findIndex(e => e.id === editingEventId);
     if (idx !== -1) day.events[idx] = { ...day.events[idx], ...data };
   } else {
-    day.events = [...(day.events||[]), { id: uid(), ...data }];
-  }
-  // If planned from wishlist, mark that item done
-  if (pendingWishItemId && !editingEventId) {
-    const wl = getWishlist();
-    const wi = wl.find(w => w.id === pendingWishItemId);
-    if (wi) wi.done = true;
-    pendingWishItemId = null;
+    const newId = uid();
+    day.events = [...(day.events||[]), { id: newId, ...data }];
+    // If planned from wishlist, mark that item done and record which event it maps to
+    if (pendingWishItemId) {
+      const wi = getWishlist().find(w => w.id === pendingWishItemId);
+      if (wi) { wi.done = true; wi.doneEventId = newId; }
+      pendingWishItemId = null;
+    }
   }
   saveDB(db);
   closeModal('eventModal');
@@ -1156,13 +1156,23 @@ function saveEvent() {
 }
 
 /* ════════════════ DELETE ════════════════ */
+
+// Uncheck any wishlist item whose doneEventId matches the deleted event
+function unlinkWishlistEvent(eventId) {
+  const wi = getWishlist().find(w => w.doneEventId === eventId);
+  if (wi) { wi.done = false; wi.doneEventId = null; }
+}
+
 function deleteEvent(eventId) {
   if (!confirm('Delete this activity?')) return;
   const trip = db.trips[activeTripId];
   const day = (trip?.days||[]).find(d => d.id === activeDayId);
   if (!day) return;
   day.events = (day.events||[]).filter(e => e.id !== eventId);
+  unlinkWishlistEvent(eventId);
   saveDB(db);
+  refreshWishCount();
+  if (wishlistActive) renderWishlistView();
   renderDaysList();
   renderDayView();
 }
@@ -1172,9 +1182,12 @@ function confirmDeleteDay() {
   const day = (trip?.days||[]).find(d => d.id === activeDayId);
   if (!day) return;
   if (!confirm(`Delete day "${day.label || formatDate(day.date)}"? All activities will be lost.`)) return;
+  // Unlink any wishlist items tied to events in this day
+  (day.events||[]).forEach(ev => unlinkWishlistEvent(ev.id));
   trip.days = trip.days.filter(d => d.id !== activeDayId);
   saveDB(db);
   activeDayId = null;
+  refreshWishCount();
   renderDaysList();
   if (trip.days.length > 0) selectDay(trip.days[0].id);
   else showNoDaySelected();
