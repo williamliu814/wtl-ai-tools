@@ -440,6 +440,231 @@
     }
     .wish-planned-chip button:hover { background: #fed7d7; color: var(--danger); }
 
+    /* ── SIDEBAR NAV ITEMS (Flights / Lodging) ── */
+    .sidebar-nav-section { padding: 8px 8px 0; display: flex; flex-direction: column; gap: 4px; }
+    .sidebar-nav-item {
+      border-radius: var(--radius-sm); padding: 10px 12px;
+      cursor: pointer; display: flex; align-items: center; gap: 10px;
+      border: 1px solid var(--border); transition: background .12s, border-color .12s;
+    }
+    .nav-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; flex-shrink: 0; transition: background .12s, color .12s;
+    }
+    .nav-info { flex: 1; min-width: 0; }
+    .nav-label { font-size: 13px; font-weight: 600; }
+    .nav-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    /* flights */
+    .flights-nav:hover { background: #ebf8ff; border-color: #90cdf4; }
+    .flights-nav.active { background: #ebf8ff; border-color: #63b3ed; }
+    .flights-nav .nav-icon { background: #bee3f8; color: #2c5282; }
+    .flights-nav.active .nav-icon { background: #3182ce; color: #fff; }
+    .flights-nav .nav-label { color: #2c5282; }
+    /* lodging */
+    .lodging-nav:hover { background: #fffff0; border-color: #f6e05e; }
+    .lodging-nav.active { background: #fffff0; border-color: #ecc94b; }
+    .lodging-nav .nav-icon { background: #fefcbf; color: #744210; }
+    .lodging-nav.active .nav-icon { background: #d69e2e; color: #fff; }
+    .lodging-nav .nav-label { color: #744210; }
+    .sidebar-nav-divider {
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px;
+      color: var(--text-muted); padding: 10px 12px 2px; display: flex; align-items: center; gap: 8px;
+    }
+    .sidebar-nav-divider::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    /* ── FLIGHTS VIEW ── */
+    .section-header {
+      padding: 24px 28px 0; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .section-title { font-size: 22px; font-weight: 700; }
+    .section-subtitle { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
+    .section-body { padding: 16px 28px 40px; }
+    .section-empty {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 12px; padding: 48px 0; color: var(--text-muted);
+    }
+    .section-empty i { font-size: 36px; opacity: .3; }
+
+    .transport-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px; margin-bottom: 10px;
+      box-shadow: var(--shadow); transition: box-shadow .15s, border-color .15s;
+    }
+    .transport-card:hover { box-shadow: var(--shadow-lg); border-color: #cbd5e0; }
+    .transport-top { display: flex; align-items: flex-start; gap: 10px; }
+    .transport-route { flex: 1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .route-point { display: flex; flex-direction: column; }
+    .route-city { font-size: 20px; font-weight: 800; line-height: 1; }
+    .route-code { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+    .route-arrow { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); gap: 2px; padding: 0 4px; }
+    .route-arrow-line { width: 40px; height: 2px; background: var(--border); }
+    .transport-type-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px;
+      padding: 3px 9px; border-radius: 20px; flex-shrink: 0;
+    }
+    .badge-flight { background: #ebf8ff; color: #2b6cb0; }
+    .badge-train  { background: #f0fff4; color: #276749; }
+    .badge-bus    { background: #faf5ff; color: #553c9a; }
+    .badge-car    { background: #fffaf0; color: #7b341e; }
+    .badge-ferry  { background: #e6fffa; color: #234e52; }
+    .badge-other  { background: var(--surface2); color: var(--text-muted); }
+    .transport-actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+    .transport-card:hover .transport-actions { opacity: 1; }
+    .transport-times {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center;
+      margin-top: 12px; padding: 10px 0; border-top: 1px solid var(--border);
+    }
+    .time-block { display: flex; flex-direction: column; gap: 2px; }
+    .time-block.right { text-align: right; }
+    .time-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); }
+    .time-value { font-size: 18px; font-weight: 700; }
+    .time-date { font-size: 11px; color: var(--text-muted); }
+    .time-arrow { text-align: center; color: var(--text-muted); font-size: 12px; }
+    .transport-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .transport-meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-muted); }
+    .transport-notes { font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic; }
+
+    /* ── LODGING VIEW ── */
+    .lodging-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px 18px; margin-bottom: 10px;
+      box-shadow: var(--shadow); transition: box-shadow .15s, border-color .15s;
+    }
+    .lodging-card:hover { box-shadow: var(--shadow-lg); border-color: #cbd5e0; }
+    .lodging-top { display: flex; align-items: flex-start; gap: 10px; }
+    .lodging-icon-wrap {
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      background: #fefcbf; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: #744210; flex-shrink: 0;
+    }
+    .lodging-info { flex: 1; min-width: 0; }
+    .lodging-name { font-size: 16px; font-weight: 700; }
+    .lodging-type-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px;
+      padding: 2px 7px; border-radius: 20px; margin-left: 6px;
+      background: #fefcbf; color: #744210;
+    }
+    .lodging-actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+    .lodging-card:hover .lodging-actions { opacity: 1; }
+    .lodging-dates {
+      display: flex; align-items: center; gap: 10px; margin-top: 10px;
+      padding: 10px 14px; background: var(--surface2); border-radius: var(--radius-sm);
+    }
+    .lodging-date-block { flex: 1; }
+    .lodging-date-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); }
+    .lodging-date-value { font-size: 15px; font-weight: 700; margin-top: 2px; }
+    .lodging-date-time { font-size: 11px; color: var(--text-muted); }
+    .lodging-nights {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 0 12px; color: var(--text-muted); font-size: 11px; font-weight: 600;
+    }
+    .lodging-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .lodging-meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-muted); }
+    .lodging-notes { font-size: 12px; color: var(--text-muted); margin-top: 8px; font-style: italic; }
+
+    /* ── SYNCED ITEMS in day view ── */
+    .synced-section { margin: 12px 28px 0; display: flex; flex-direction: column; gap: 8px; }
+    .synced-item {
+      display: flex; align-items: center; gap: 12px;
+      border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px;
+      cursor: pointer;
+    }
+    .synced-flight-dep, .synced-flight-arr { background: #ebf8ff; border: 1px solid #bee3f8; }
+    .synced-lodging-in, .synced-lodging-out { background: #fffff0; border: 1px solid #faf089; }
+    .synced-dot {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 12px;
+    }
+    .synced-flight-dep .synced-dot, .synced-flight-arr .synced-dot { background: #3182ce; color: #fff; }
+    .synced-lodging-in .synced-dot, .synced-lodging-out .synced-dot { background: #d69e2e; color: #fff; }
+    .synced-body { flex: 1; min-width: 0; }
+    .synced-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .synced-flight-dep .synced-tag, .synced-flight-arr .synced-tag { color: #2b6cb0; }
+    .synced-lodging-in .synced-tag, .synced-lodging-out .synced-tag { color: #744210; }
+    .synced-text { font-weight: 600; font-size: 13px; }
+    .synced-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .synced-edit { font-size: 11px; color: var(--primary); opacity: 0; transition: opacity .15s; white-space: nowrap; }
+    .synced-item:hover .synced-edit { opacity: 1; }
+
+    /* calendar nav */
+    .calendar-nav:hover { background: #f0fff4; border-color: #9ae6b4; }
+    .calendar-nav.active { background: #f0fff4; border-color: #68d391; }
+    .calendar-nav .nav-icon { background: #c6f6d5; color: #276749; }
+    .calendar-nav.active .nav-icon { background: #38a169; color: #fff; }
+    .calendar-nav .nav-label { color: #276749; }
+
+    /* ── CALENDAR VIEW ── */
+    .calendar-wrap { padding: 20px 28px 40px; }
+    .cal-nav { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .cal-nav h3 { flex: 1; text-align: center; font-size: 17px; font-weight: 700; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
+    .cal-dow {
+      text-align: center; font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .5px; color: var(--text-muted); padding: 6px 0;
+    }
+    .cal-cell {
+      min-height: 72px; border-radius: var(--radius-sm); padding: 6px;
+      border: 1px solid transparent; background: var(--surface2); position: relative;
+      cursor: default; transition: border-color .12s, box-shadow .12s;
+    }
+    .cal-cell.has-day { background: var(--surface); border-color: var(--border); cursor: pointer; }
+    .cal-cell.has-day:hover { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-light); }
+    .cal-cell.active-day { border-color: var(--primary) !important; background: var(--primary-light) !important; }
+    .cal-cell.today-cell { border-color: #9ae6b4 !important; }
+    .cal-cell.other-month { opacity: .35; }
+    .cal-cell.empty { background: transparent; border-color: transparent; }
+    .cal-date {
+      font-size: 12px; font-weight: 700; color: var(--text-muted);
+      line-height: 1; margin-bottom: 4px;
+    }
+    .cal-cell.has-day .cal-date { color: var(--text); }
+    .cal-cell.active-day .cal-date { color: var(--primary); }
+    .cal-cell.today-cell .cal-date { color: var(--success); }
+    .cal-day-label { font-size: 10px; color: var(--primary); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cal-pips { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+    .cal-pip {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    }
+    .cal-flight-banner {
+      margin-top: 3px; font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .3px; color: #2b6cb0; background: #ebf8ff;
+      border-radius: 3px; padding: 1px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .cal-lodging-banner {
+      margin-top: 2px; font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .3px; color: #744210; background: #fffff0;
+      border-radius: 3px; padding: 1px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .cal-month-section { margin-bottom: 28px; }
+    .cal-month-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--text-muted); }
+
+    /* ── SYNCED ITEMS in day view ── */
+    .synced-section { margin: 12px 28px 0; display: flex; flex-direction: column; gap: 6px; }
+    .synced-item {
+      display: flex; align-items: center; gap: 10px;
+      border-radius: var(--radius-sm); padding: 9px 12px; font-size: 13px;
+      cursor: pointer; transition: filter .12s;
+    }
+    .synced-item:hover { filter: brightness(.97); }
+    .synced-flight-dep, .synced-flight-arr { background: #ebf8ff; border: 1px solid #bee3f8; }
+    .synced-lodging-in, .synced-lodging-out { background: #fffff0; border: 1px solid #faf089; }
+    .synced-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px;
+    }
+    .synced-flight-dep .synced-dot, .synced-flight-arr .synced-dot { background: #3182ce; color: #fff; }
+    .synced-lodging-in .synced-dot, .synced-lodging-out .synced-dot { background: #d69e2e; color: #fff; }
+    .synced-body { flex: 1; min-width: 0; }
+    .synced-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+    .synced-flight-dep .synced-tag, .synced-flight-arr .synced-tag { color: #2b6cb0; }
+    .synced-lodging-in .synced-tag, .synced-lodging-out .synced-tag { color: #744210; }
+    .synced-text { font-weight: 600; font-size: 13px; }
+    .synced-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .synced-edit { font-size: 11px; color: var(--primary); flex-shrink: 0; }
+
     /* ── SCROLLBAR ── */
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -480,6 +705,30 @@
       <h2><i class="fa-regular fa-calendar"></i>&nbsp; Itinerary</h2>
       <button class="btn btn-ghost btn-sm" style="width:100%" onclick="openAddDayModal()"><i class="fa-solid fa-plus"></i> Add Day</button>
     </div>
+    <div class="sidebar-nav-section">
+      <div id="sidebarFlights" class="sidebar-nav-item flights-nav" onclick="selectFlights()">
+        <div class="nav-icon"><i class="fa-solid fa-plane"></i></div>
+        <div class="nav-info">
+          <div class="nav-label">Flights &amp; Transport</div>
+          <div class="nav-sub" id="flightsSub">No bookings yet</div>
+        </div>
+      </div>
+      <div id="sidebarLodging" class="sidebar-nav-item lodging-nav" onclick="selectLodging()">
+        <div class="nav-icon"><i class="fa-solid fa-bed"></i></div>
+        <div class="nav-info">
+          <div class="nav-label">Lodging</div>
+          <div class="nav-sub" id="lodgingSub">No lodging yet</div>
+        </div>
+      </div>
+      <div id="sidebarCalendar" class="sidebar-nav-item calendar-nav" onclick="selectCalendar()">
+        <div class="nav-icon"><i class="fa-regular fa-calendar-days"></i></div>
+        <div class="nav-info">
+          <div class="nav-label">Calendar</div>
+          <div class="nav-sub" id="calendarSub">Trip overview</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-nav-divider">Itinerary</div>
     <div id="sidebarWishlist" class="sidebar-wishlist" onclick="selectWishlist()">
       <div class="wish-sidebar-num"><i class="fa-solid fa-star"></i></div>
       <div class="wish-sidebar-info">
@@ -503,13 +752,11 @@
       <button class="btn btn-primary" onclick="openTripModal()"><i class="fa-solid fa-plus"></i> Create Trip</button>
     </div>
 
-    <div id="dayView" style="display:none">
-      <!-- injected dynamically -->
-    </div>
-
-    <div id="wishlistView" style="display:none">
-      <!-- injected dynamically -->
-    </div>
+    <div id="flightsView" style="display:none"></div>
+    <div id="lodgingView" style="display:none"></div>
+    <div id="calendarView" style="display:none"></div>
+    <div id="dayView" style="display:none"></div>
+    <div id="wishlistView" style="display:none"></div>
   </main>
 </div>
 
@@ -575,6 +822,186 @@
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('addDayModal')">Cancel</button>
       <button class="btn btn-primary" onclick="saveDay()"><i class="fa-solid fa-plus"></i> Add Day</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLIGHT / TRANSPORT MODAL -->
+<div id="flightModal" class="modal-backdrop" style="display:none">
+  <div class="modal" style="max-width:580px">
+    <div class="modal-header">
+      <h2 id="flightModalTitle">Add Flight / Transport</h2>
+      <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('flightModal')"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Type</label>
+          <select id="ff_type" onchange="updateFlightModalLabels()">
+            <option value="flight">✈ Flight</option>
+            <option value="train">🚂 Train</option>
+            <option value="bus">🚌 Bus</option>
+            <option value="car">🚗 Rental Car</option>
+            <option value="ferry">⛴ Ferry</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label id="ff_carrierLabel">Airline</label>
+          <input id="ff_carrier" type="text" placeholder="e.g. United" />
+        </div>
+        <div class="field">
+          <label id="ff_numLabel">Flight #</label>
+          <input id="ff_num" type="text" placeholder="e.g. UA837" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label id="ff_fromLabel">From (City / Airport)</label>
+          <input id="ff_from" type="text" placeholder="e.g. San Francisco" />
+        </div>
+        <div class="field" style="max-width:90px">
+          <label id="ff_fromCodeLabel">Code</label>
+          <input id="ff_fromCode" type="text" placeholder="SFO" style="text-transform:uppercase" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label id="ff_toLabel">To (City / Airport)</label>
+          <input id="ff_to" type="text" placeholder="e.g. Tokyo (Narita)" />
+        </div>
+        <div class="field" style="max-width:90px">
+          <label id="ff_toCodeLabel">Code</label>
+          <input id="ff_toCode" type="text" placeholder="NRT" style="text-transform:uppercase" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Departure Date</label>
+          <input id="ff_depDate" type="date" />
+        </div>
+        <div class="field">
+          <label>Departure Time</label>
+          <input id="ff_depTime" type="time" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Arrival Date</label>
+          <input id="ff_arrDate" type="date" />
+        </div>
+        <div class="field">
+          <label>Arrival Time</label>
+          <input id="ff_arrTime" type="time" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Confirmation #</label>
+          <input id="ff_conf" type="text" placeholder="e.g. ABC123" style="text-transform:uppercase" />
+        </div>
+        <div class="field">
+          <label>Seat</label>
+          <input id="ff_seat" type="text" placeholder="e.g. 34A" />
+        </div>
+        <div class="field">
+          <label>Cost</label>
+          <input id="ff_cost" type="number" min="0" step="0.01" placeholder="0.00" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <textarea id="ff_notes" placeholder="Baggage info, terminal, layovers…" style="min-height:60px"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('flightModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveFlightItem()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- LODGING MODAL -->
+<div id="lodgingModal" class="modal-backdrop" style="display:none">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-header">
+      <h2 id="lodgingModalTitle">Add Lodging</h2>
+      <button class="btn btn-ghost btn-icon btn-sm" onclick="closeModal('lodgingModal')"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="field-row">
+        <div class="field">
+          <label>Lodging Type</label>
+          <select id="lf_type">
+            <option value="hotel">🏨 Hotel</option>
+            <option value="airbnb">🏠 Airbnb / Vacation Rental</option>
+            <option value="hostel">🛏 Hostel</option>
+            <option value="resort">🌴 Resort</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Property Name</label>
+        <input id="lf_name" type="text" placeholder="e.g. Shinjuku Granbell Hotel" />
+      </div>
+      <div class="field">
+        <label>Address / Location</label>
+        <div class="loc-search-wrap">
+          <div class="loc-search-row">
+            <input id="lf_address" type="text" placeholder="Search or type address…"
+              oninput="onLodgingLocationInput(this.value)" autocomplete="off" />
+            <button class="btn btn-ghost btn-sm" type="button" id="lodgingLocSearchBtn"
+              onclick="triggerLodgingLocationSearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+          <div id="lodgingLocResults" class="loc-results" style="display:none"></div>
+          <div id="lodgingLocChip" class="loc-chip" style="display:none"></div>
+        </div>
+        <input type="hidden" id="lf_loc_lat" />
+        <input type="hidden" id="lf_loc_lng" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Check-in Date</label>
+          <input id="lf_checkIn" type="date" />
+        </div>
+        <div class="field">
+          <label>Check-in Time</label>
+          <input id="lf_checkInTime" type="time" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Check-out Date</label>
+          <input id="lf_checkOut" type="date" />
+        </div>
+        <div class="field">
+          <label>Check-out Time</label>
+          <input id="lf_checkOutTime" type="time" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Confirmation #</label>
+          <input id="lf_conf" type="text" placeholder="e.g. XYZ789" style="text-transform:uppercase" />
+        </div>
+        <div class="field">
+          <label>Total Cost</label>
+          <input id="lf_cost" type="number" min="0" step="0.01" placeholder="0.00" />
+        </div>
+      </div>
+      <div class="field">
+        <label>Website / Phone</label>
+        <input id="lf_contact" type="text" placeholder="hotel website or phone number" />
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <textarea id="lf_notes" placeholder="Parking, amenities, special requests…" style="min-height:60px"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('lodgingModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveLodgingItem()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
     </div>
   </div>
 </div>
@@ -734,9 +1161,14 @@ function uid() { return Date.now().toString(36) + Math.random().toString(36).sli
 let db = loadDB();
 let activeTripId = db.activeTripId || null;
 let activeDayId = null;
-let wishlistActive = false;         // sidebar showing wishlist view
+let activeView = null;              // 'day'|'wishlist'|'flights'|'lodging'|null
+let wishlistActive = false;         // kept for compatibility
 let editingEventId = null;
 let editingWishId = null;
+let editingFlightId = null;
+let editingLodgingId = null;
+let selectedLodgingLocationData = null;
+let lodgingLocDebounceTimer = null;
 let pendingWishItemId = null;       // wishlist item being planned into an activity
 let selectedLocationData = null;    // for event modal location search
 let selectedWishLocationData = null;// for wish modal location search
@@ -783,13 +1215,20 @@ function loadTrip(id, silent) {
   activeTripId = id;
   activeDayId = null;
   wishlistActive = false;
+  calendarCurrentMonth = null; // reset so calendar defaults to trip start
   db.activeTripId = id; saveDB(db);
-  // ensure wishlist array exists (backwards compat)
-  if (!db.trips[id].wishlist) { db.trips[id].wishlist = []; saveDB(db); }
+  // ensure new arrays exist (backwards compat)
+  let dirty = false;
+  if (!db.trips[id].wishlist) { db.trips[id].wishlist = []; dirty = true; }
+  if (!db.trips[id].flights)  { db.trips[id].flights  = []; dirty = true; }
+  if (!db.trips[id].lodging)  { db.trips[id].lodging  = []; dirty = true; }
+  if (dirty) saveDB(db);
   document.getElementById('tripSelect').value = id;
   showSidebar();
   renderDaysList();
   refreshWishCount();
+  refreshFlightsSub();
+  refreshLodgingSub();
   // auto-select first day
   const trip = db.trips[id];
   if (trip.days && trip.days.length > 0) {
@@ -830,18 +1269,35 @@ function renderDaysList() {
 }
 
 /* ════════════════ DAY VIEW ════════════════ */
+function setActiveView(name) {
+  activeView = name;
+  wishlistActive = (name === 'wishlist');
+  ['flightsView','lodgingView','calendarView','dayView','wishlistView','emptyState'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  ['sidebarFlights','sidebarLodging','sidebarCalendar','sidebarWishlist'].forEach(id => {
+    document.getElementById(id)?.classList.remove('active');
+  });
+  if (name === 'flights')  { document.getElementById('sidebarFlights').classList.add('active');  document.getElementById('flightsView').style.display  = 'block'; }
+  if (name === 'lodging')  { document.getElementById('sidebarLodging').classList.add('active');  document.getElementById('lodgingView').style.display  = 'block'; }
+  if (name === 'calendar') { document.getElementById('sidebarCalendar').classList.add('active'); document.getElementById('calendarView').style.display = 'block'; }
+  if (name === 'wishlist') { document.getElementById('sidebarWishlist').classList.add('active'); document.getElementById('wishlistView').style.display = 'block'; }
+  if (name === 'day')      document.getElementById('dayView').style.display = 'block';
+  if (!name)               document.getElementById('emptyState').style.display = 'flex';
+}
+
 function selectDay(dayId) {
   activeDayId = dayId;
-  wishlistActive = false;
-  document.getElementById('sidebarWishlist').classList.remove('active');
   renderDaysList();
+  setActiveView('day');
   renderDayView();
-  document.getElementById('emptyState').style.display = 'none';
-  document.getElementById('wishlistView').style.display = 'none';
-  document.getElementById('dayView').style.display = 'block';
+  // Keep calendar in sync if user returns to it
+  if (activeView === 'calendar') renderCalendarView();
 }
 
 function showNoDaySelected() {
+  setActiveView(null);
   document.getElementById('emptyState').style.display = 'flex';
   document.getElementById('emptyState').innerHTML = `
     <div class="empty-icon"><i class="fa-regular fa-calendar-plus"></i></div>
@@ -849,11 +1305,10 @@ function showNoDaySelected() {
     <p>Add your first day to start planning your itinerary.</p>
     <button class="btn btn-primary" onclick="openAddDayModal()"><i class="fa-solid fa-plus"></i> Add Day</button>
   `;
-  document.getElementById('dayView').style.display = 'none';
-  document.getElementById('wishlistView').style.display = 'none';
 }
 
 function showEmptyState() {
+  setActiveView(null);
   const es = document.getElementById('emptyState');
   es.innerHTML = `
     <div class="empty-icon"><i class="fa-solid fa-map-location-dot"></i></div>
@@ -862,8 +1317,6 @@ function showEmptyState() {
     <button class="btn btn-primary" onclick="openTripModal()"><i class="fa-solid fa-plus"></i> Create Trip</button>
   `;
   es.style.display = 'flex';
-  document.getElementById('dayView').style.display = 'none';
-  document.getElementById('wishlistView').style.display = 'none';
 }
 
 function renderDayView() {
@@ -1232,14 +1685,177 @@ function refreshWishCount() {
 }
 
 function selectWishlist() {
-  wishlistActive = true;
   activeDayId = null;
-  document.getElementById('sidebarWishlist').classList.add('active');
-  renderDaysList(); // clears active from day items
-  document.getElementById('emptyState').style.display = 'none';
-  document.getElementById('dayView').style.display = 'none';
-  document.getElementById('wishlistView').style.display = 'block';
+  renderDaysList();
+  setActiveView('wishlist');
   renderWishlistView();
+}
+
+function selectFlights() {
+  activeDayId = null;
+  renderDaysList();
+  setActiveView('flights');
+  document.getElementById('flightsView').innerHTML = `
+    <div class="section-header"><div><div class="section-title"><i class="fa-solid fa-plane" style="color:#3182ce"></i> Flights &amp; Transport</div>
+    <div class="section-subtitle">Coming soon</div></div></div>
+    <div class="section-body"><div class="section-empty"><i class="fa-solid fa-plane"></i><span>Flight &amp; transport details coming soon.</span></div></div>`;
+}
+
+function selectLodging() {
+  activeDayId = null;
+  renderDaysList();
+  setActiveView('lodging');
+  document.getElementById('lodgingView').innerHTML = `
+    <div class="section-header"><div><div class="section-title"><i class="fa-solid fa-bed" style="color:#d69e2e"></i> Lodging</div>
+    <div class="section-subtitle">Coming soon</div></div></div>
+    <div class="section-body"><div class="section-empty"><i class="fa-solid fa-bed"></i><span>Lodging details coming soon.</span></div></div>`;
+}
+
+function refreshFlightsSub() {
+  const el = document.getElementById('flightsSub');
+  if (el) el.textContent = 'Coming soon';
+}
+function refreshLodgingSub() {
+  const el = document.getElementById('lodgingSub');
+  if (el) el.textContent = 'Coming soon';
+}
+
+/* ════════════════ CALENDAR ════════════════ */
+
+let calendarCurrentMonth = null; // { year, month } being viewed
+
+function selectCalendar() {
+  activeDayId = null;
+  renderDaysList();
+  setActiveView('calendar');
+  // Default to the trip start month, or today
+  const trip = db.trips[activeTripId];
+  if (!calendarCurrentMonth) {
+    const ref = trip?.startDate ? new Date(trip.startDate + 'T00:00:00') : new Date();
+    calendarCurrentMonth = { year: ref.getFullYear(), month: ref.getMonth() };
+  }
+  renderCalendarView();
+}
+
+function renderCalendarView() {
+  const trip = db.trips[activeTripId];
+  const el = document.getElementById('calendarView');
+  if (!trip || !el) return;
+
+  // Build a lookup: date string → day object
+  const dayMap = {};
+  (trip.days || []).forEach(d => { if (d.date) dayMap[d.date] = d; });
+
+  const { year, month } = calendarCurrentMonth;
+  const monthName = new Date(year, month, 1).toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+  // Compute grid cells (pad to start on Sunday)
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const todayStr = new Date().toISOString().slice(0, 10);
+
+  const cells = [];
+  // leading blanks
+  for (let i = 0; i < firstDay; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+
+  function dateStr(d) {
+    return `${year}-${String(month + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  }
+
+  function renderCell(d) {
+    if (d === null) return `<div class="cal-cell empty"></div>`;
+    const ds = dateStr(d);
+    const day = dayMap[ds];
+    const isToday = ds === todayStr;
+    const isActive = day && day.id === activeDayId;
+    let cls = 'cal-cell';
+    if (day)     cls += ' has-day';
+    if (isToday) cls += ' today-cell';
+    if (isActive) cls += ' active-day';
+    const onclick = day ? `onclick="selectDay('${day.id}')"` : `onclick="calCellClick('${ds}')"`;
+    const evCount = day ? (day.events || []).length : 0;
+    const pips = day ? (day.events || []).slice(0, 6).map(ev => {
+      const c = { flight:'#805ad5', hotel:'#d69e2e', food:'#e53e3e', activity:'#38a169', transport:'#3182ce', shopping:'#d53f8c', other:'#718096' }[ev.category] || '#718096';
+      return `<div class="cal-pip" style="background:${c}"></div>`;
+    }).join('') : '';
+    const label = day ? `<div class="cal-day-label">${esc(day.label || (evCount ? evCount + (evCount===1?' activity':' activities') : ''))}</div>` : '';
+    return `<div class="${cls}" ${onclick}>
+      <div class="cal-date">${d}</div>
+      ${label}
+      ${pips ? `<div class="cal-pips">${pips}</div>` : ''}
+    </div>`;
+  }
+
+  const grid = cells.map(renderCell).join('');
+  const dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => `<div class="cal-dow">${d}</div>`).join('');
+
+  // Show a legend of days in this month
+  const monthDays = (trip.days || [])
+    .filter(d => d.date && d.date.startsWith(`${year}-${String(month+1).padStart(2,'0')}`))
+    .sort((a,b) => a.date.localeCompare(b.date));
+
+  const legend = monthDays.length > 0 ? `
+    <div style="margin-top:20px;display:flex;flex-direction:column;gap:6px">
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-bottom:4px">Days this month</div>
+      ${monthDays.map(d => `
+        <div onclick="selectDay('${d.id}')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:box-shadow .12s" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow=''">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--primary);flex-shrink:0">${parseInt(d.date.slice(8))}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:600;font-size:13px">${esc(d.label || formatDate(d.date))}</div>
+            ${d.label ? `<div style="font-size:11px;color:var(--text-muted)">${formatDate(d.date)}</div>` : ''}
+          </div>
+          <div style="font-size:11px;color:var(--text-muted)">${(d.events||[]).length} ${(d.events||[]).length===1?'activity':'activities'}</div>
+          <i class="fa-solid fa-chevron-right" style="font-size:11px;color:var(--text-muted)"></i>
+        </div>`).join('')}
+    </div>` : '';
+
+  el.innerHTML = `
+    <div style="padding:24px 28px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="flex:1">
+        <div class="section-title"><i class="fa-regular fa-calendar-days" style="color:#38a169"></i> Calendar</div>
+        <div class="section-subtitle">${esc(trip.name)}</div>
+      </div>
+    </div>
+    <div class="calendar-wrap">
+      <div class="cal-nav">
+        <button class="btn btn-ghost btn-sm" onclick="calNavMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <h3>${monthName}</h3>
+        <button class="btn btn-ghost btn-sm" onclick="calNavMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="btn btn-ghost btn-sm" onclick="calGoToday()" title="Go to today"><i class="fa-regular fa-calendar-check"></i> Today</button>
+      </div>
+      <div class="cal-grid">${dows}${grid}</div>
+      ${legend}
+    </div>`;
+}
+
+function calNavMonth(delta) {
+  if (!calendarCurrentMonth) return;
+  let { year, month } = calendarCurrentMonth;
+  month += delta;
+  if (month < 0)  { month = 11; year--; }
+  if (month > 11) { month = 0;  year++; }
+  calendarCurrentMonth = { year, month };
+  renderCalendarView();
+}
+
+function calGoToday() {
+  const today = new Date();
+  calendarCurrentMonth = { year: today.getFullYear(), month: today.getMonth() };
+  renderCalendarView();
+}
+
+function calCellClick(dateStr) {
+  // Clicked a cell with no day — offer to create one
+  if (!activeTripId) return;
+  if (confirm(`Add ${formatDate(dateStr)} to your itinerary?`)) {
+    const trip = db.trips[activeTripId];
+    const id = uid();
+    trip.days = [...(trip.days || []), { id, date: dateStr, label: '', notes: '', events: [] }];
+    saveDB(db);
+    renderDaysList();
+    selectDay(id);
+  }
 }
 
 function renderWishlistView() {
